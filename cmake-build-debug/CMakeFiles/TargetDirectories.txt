@@ -1,0 +1,3 @@
+/Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/cmake-build-debug/CMakeFiles/main.dir
+/Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/cmake-build-debug/CMakeFiles/rebuild_cache.dir

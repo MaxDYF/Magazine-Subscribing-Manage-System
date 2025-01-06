@@ -1,0 +1,7 @@
+# ninja log v6
+5	897	1734942722173183249	CMakeFiles/main.cpp.dir/Magazine.cpp.o	3d263ebc33b4101e
+2	1144	1734942289504042738	CMakeFiles/main.cpp.dir/Subscriber.cpp.o	bcf67d94b684b2f0
+2	1125	1734942289504455617	CMakeFiles/main.cpp.dir/Subscription.cpp.o	93c5f6e78676f828
+5	933	1734942722173846089	CMakeFiles/main.cpp.dir/Database.cpp.o	f7f1e584cdcad6b8
+2	179	1734942289504317991	CMakeFiles/main.cpp.dir/Time.cpp.o	6f058de653b2cbba
+2	49	1734942858276353886	build.ninja	5344c69c876930ea
