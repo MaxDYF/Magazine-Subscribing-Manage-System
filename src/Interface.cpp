@@ -205,55 +205,61 @@ void Interface::displayAllMagazines() {
 
 void Interface::start() {
     int choice;
-    do {
-        cout << "\n--- 订户管理系统 ---\n";
-        cout << "1. 添加新订户\n";
-        cout << "2. 查询订户\n";
-        cout << "3. 添加订阅\n";
-        cout << "4. 添加杂志\n";
-        cout << "5. 显示所有订户\n";
-        cout << "6. 显示所有杂志\n";
-        cout << "7. 编辑订户信息\n";
-        cout << "8. 删除已过期订户\n";
-        cout << "9. 统计信息\n";
-        cout << "0. 退出\n";
-        cout << "请输入选择: ";
-        cin >> choice;
+    try {
 
-        switch (choice) {
-            case 1:
-                addSubscriber();
+        do {
+            cout << "\n--- 订户管理系统 ---\n";
+            cout << "1. 添加新订户\n";
+            cout << "2. 查询订户\n";
+            cout << "3. 添加订阅\n";
+            cout << "4. 添加杂志\n";
+            cout << "5. 显示所有订户\n";
+            cout << "6. 显示所有杂志\n";
+            cout << "7. 编辑订户信息\n";
+            cout << "8. 删除已过期订户\n";
+            cout << "9. 统计信息\n";
+            cout << "0. 退出\n";
+            cout << "请输入选择: ";
+            cin >> choice;
+
+            switch (choice) {
+                case 1:
+                    addSubscriber();
                 break;
-            case 2:
-                querySubscriber();
+                case 2:
+                    querySubscriber();
                 break;
-            case 3:
-                addSubscription();
+                case 3:
+                    addSubscription();
                 break;
-            case 4:
-                addMagazine();
+                case 4:
+                    addMagazine();
                 break;
-            case 5:
-                displayAllSubscribers();
+                case 5:
+                    displayAllSubscribers();
                 break;
-            case 6:
-                displayAllMagazines();
+                case 6:
+                    displayAllMagazines();
                 break;
-            case 7:
-                editSubscriber();
+                case 7:
+                    editSubscriber();
                 break;
-            case 8:
-                deleteExpiredSubscribers();
+                case 8:
+                    deleteExpiredSubscribers();
                 break;
-            case 9:
-                statistics();
+                case 9:
+                    statistics();
                 break;
-            case 0:
-                cout << "退出系统！\n";
+                case 0:
+                    cout << "退出系统！\n";
                 break;
-            default:
-                cout << "无效选择，请重新输入。\n";
-        }
-        db.saveAsJson(DATA_FILE_PATH);
-    } while (choice != 0);
+                default:
+                    cout << "无效选择，请重新输入。\n";
+            }
+            db.saveAsJson(DATA_FILE_PATH);
+        } while (choice != 0);
+    } catch (const exception &e) {
+        cerr << e.what() << endl;
+        return;
+    }
 }

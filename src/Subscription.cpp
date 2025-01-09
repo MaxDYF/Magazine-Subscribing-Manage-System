@@ -51,6 +51,18 @@ nlohmann::json Subscription::jsonify() const {
     return json;
 }
 void Subscription::parseJson(const nlohmann::json &json) {
+    if (json.contains("subscription_id") == false)
+        throw std::invalid_argument("Subscription::parseJson: subscription_id not found");
+    if (json.contains("subscriber_uid") == false)
+        throw std::invalid_argument("Subscription::parseJson: subscriber_uid not found");
+    if (json.contains("magazine_id") == false)
+        throw std::invalid_argument("Subscription::parseJson: magazine_id not found");
+    if (json.contains("beginTime") == false)
+        throw std::invalid_argument("Subscription::parseJson: beginTime not found");
+    if (json.contains("endTime") == false)
+        throw std::invalid_argument("Subscription::parseJson: endTime not found");
+    if (json.contains("count") == false)
+        throw std::invalid_argument("Subscription::parseJson: count not found");
     subscription_id = json["subscription_id"].get<int>();
     subscriber_uid = json["subscriber_uid"].get<int>();
     magazine_id = json["magazine_id"].get<int>();

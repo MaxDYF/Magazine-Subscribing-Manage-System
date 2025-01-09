@@ -7,6 +7,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <list>
 #include "Magazine.h"
 #include "Subscriber.h"
 #include "Subscription.h"
@@ -35,9 +36,9 @@ public:
     Magazine& getMagazine(int magazine_id);
     Subscriber& getSubscriber(int subscriber_uid);
     Subscription& getSubscription(int subscriber_uid);
-    std::vector<Magazine_Info> getMagazines();
-    std::vector<Subscriber_Info> getSubscribers(const std::string &name, const std::string &gender, const std::string &phoneNumber, const std::string &address);
-    std::vector<Subscription> getSubscriptions(int greaterThan, int lessThan);
+    std::list<Magazine_Info> getMagazines();
+    std::list<Subscriber_Info> getSubscribers(const std::string &name, const std::string &gender, const std::string &phoneNumber, const std::string &address);
+    std::list<Subscription> getSubscriptions(int greaterThan, int lessThan);
     nlohmann::json jsonify() const;
     void parseJson(nlohmann::json json);
     void saveAsJson(const std::string& save_path) const;

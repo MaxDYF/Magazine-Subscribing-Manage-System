@@ -52,6 +52,16 @@ nlohmann::json Subscriber_Info::jsonify() const {
 return json;
 }
 void Subscriber_Info::parseJson(const nlohmann::json& json) {
+    if (json.contains("uid") == false)
+        throw std::invalid_argument("Subscriber_Info::parseJson: uid does not exist");
+    if (json.contains("name") == false)
+        throw std::invalid_argument("Subscriber_Info::parseJson: name does not exist");
+    if (json.contains("gender") == false)
+        throw std::invalid_argument("Subscriber_Info::parseJson: gender does not exist");
+    if (json.contains("phoneNumber") == false)
+        throw std::invalid_argument("Subscriber_Info::parseJson: phoneNumber does not exist");
+    if (json.contains("address") == false)
+        throw std::invalid_argument("Subscriber_Info::parseJson: address does not exist");
     this->uid = json["uid"].get<int>();
     this->name = json["name"].get<std::string>();
     this->gender = json["gender"].get<std::string>();
@@ -91,3 +101,7 @@ std::string Subscriber_Info::getName() const {
     return this->name;
 }
 
+
+bool operator==(const Subscriber_Info& lhs, const Subscriber_Info& rhs) {
+    return lhs.uid == rhs.uid;
+}

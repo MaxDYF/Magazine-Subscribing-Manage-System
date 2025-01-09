@@ -49,6 +49,12 @@ int Magazine_Info::getPrice() const {
     return this->price;
 }
 void Magazine_Info::parseJson(const nlohmann::json &json) {
+    if (json.contains("name") == false)
+        throw std::invalid_argument("Magazine_Info::parseJson: name not found.");
+    if (json.contains("id") == false)
+        throw std::invalid_argument("Magazine_Info::parseJson: id not found.");
+    if (json.contains("price") == false)
+        throw std::invalid_argument("Magazine_Info::parseJson: price not found.");
     this->name = json["name"].get<std::string>();
     this->id = json["id"].get<int>();
     this->price = json["price"].get<int>();
@@ -67,7 +73,9 @@ void Magazine_Info::setName(const std::string &name) {
 Magazine_Info Magazine_Info::getInfo() const {
     return *this;
 }
-
+bool operator==(const Magazine_Info &a, const Magazine_Info &b) {
+    return a.id == b.id;
+}
 
 
 

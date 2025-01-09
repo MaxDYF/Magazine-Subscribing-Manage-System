@@ -13,6 +13,8 @@
 
 
 class Subscriber_Info {
+    friend class Subscriber;
+    friend bool operator==(const Subscriber_Info& lhs, const Subscriber_Info& rhs);
 private:
     int uid;
     std::string name;
@@ -46,7 +48,7 @@ public:
     void addSubscription(const Subscription &subscription);
     void removeSubscription(int subscription_id);
 };
-
+bool operator==(const Subscriber_Info& lhs, const Subscriber_Info& rhs);
 
 
 #endif //SUBSCRIBER_H

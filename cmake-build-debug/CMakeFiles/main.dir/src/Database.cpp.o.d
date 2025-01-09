@@ -908,9 +908,7 @@ CMakeFiles/main.dir/src/Database.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cstdarg \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__memory/temp_value.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/Magazine.h \
-  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/Subscriber.h \
-  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/json.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/functional \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/binary_negate.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/bind.h \
@@ -931,6 +929,9 @@ CMakeFiles/main.dir/src/Database.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/pointer_to_binary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/unary_negate.h \
+  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/Magazine.h \
+  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/Subscriber.h \
+  /Users/maxdyf/Documents/代码/C++课设/杂志订阅系统/src/json.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/forward_list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__tree \

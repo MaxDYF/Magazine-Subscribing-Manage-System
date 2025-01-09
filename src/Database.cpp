@@ -109,6 +109,12 @@ nlohmann::json Database::jsonify() const {
 }
 
 void Database::parseJson(nlohmann::json json) {
+    if (json.contains("magazines") == false)
+        throw std::invalid_argument("Database::parseJson: Magazines not found");
+    if (json.contains("subscriber_user_count") == false)
+        throw std::invalid_argument("Database::parseJson: Subscriber_user_count not found");
+    if (json.contains("subscription_user_count") == false)
+        throw std::invalid_argument("Database::parseJson: Subscription_user_count not found");
     this->magazine_user_count = json["magazine_user_count"].get<int>();
     this->subscriber_user_count = json["subscriber_user_count"].get<int>();
     this->subscription_count = json["subscription_count"].get<int>();
@@ -139,8 +145,8 @@ void Database::parseJson(nlohmann::json json) {
     }
 }
 
-std::vector<Subscriber_Info> Database::getSubscribers(const std::string &name = "", const std::string &gender = "", const std::string &phoneNumber = "", const std::string &address = "") {
-    std::vector<Subscriber_Info> subscribers;
+std::list<Subscriber_Info> Database::getSubscribers(const std::string &name = "", const std::string &gender = "", const std::string &phoneNumber = "", const std::string &address = "") {
+    std::list<Subscriber_Info> subscribers;
     for (const auto &[key, subscriber] : this->subscribers) {
         if (key != -1)
             if (name.empty() || name == subscriber.getName())
@@ -149,27 +155,27 @@ std::vector<Subscriber_Info> Database::getSubscribers(const std::string &name = 
                         if (address.empty() || address == subscriber.getAddress())
                             subscribers.push_back(subscriber);
     }
-    sort(subscribers.begin(), subscribers.end(), [](const Subscriber_Info &a, const Subscriber_Info &b) {return a.getUid() < b.getUid();});
+    subscribers.sort([](const Subscriber_Info &a, const Subscriber_Info &b) {return a.getUid() < b.getUid();});
     return subscribers;
 }
-std::vector<Subscription> Database::getSubscriptions(int expire_greaterThan = -1, int expire_lessThan = -1) {
-    std::vector<Subscription> subscriptions;
+std::list<Subscription> Database::getSubscriptions(int expire_greaterThan = -1, int expire_lessThan = -1) {
+    std::list<Subscription> subscriptions;
     for (const auto &[key, subscription] : this->subscriptions) {
         if (key != -1)
             if (expire_greaterThan == -1 || subscription.getEndTime() >= expire_greaterThan)
                 if (expire_lessThan == -1 || subscription.getEndTime() <= expire_lessThan)
                     subscriptions.push_back(subscription);
     }
-    sort(subscriptions.begin(), subscriptions.end(), [](const Subscription &a, const Subscription &b) {return a.getSubscriptionId() < b.getSubscriptionId();});
+    subscriptions.sort([](const Subscription &a, const Subscription &b) {return a.getSubscriptionId() < b.getSubscriptionId();});
     return subscriptions;
 }
-std::vector<Magazine_Info> Database::getMagazines() {
-    std::vector<Magazine_Info> magazines;
+std::list<Magazine_Info> Database::getMagazines() {
+    std::list<Magazine_Info> magazines;
     for (const auto &[key, magazine] : this->magazines) {
         if (magazine.getId() != -1)
             magazines.emplace_back(magazine.getInfo());
     }
-    std::sort(magazines.begin(), magazines.end(), [](const Magazine_Info &a, const Magazine_Info &b) {return a.getId() < b.getId();});
+    magazines.sort([](const Magazine_Info &a, const Magazine_Info &b) {return a.getId() < b.getId();});
     return magazines;
 }
 
@@ -181,7 +187,7 @@ void Database::saveAsJson(const std::string& save_path) const {
         file.close();
     }
     else
-        std::cerr << "Save File Error!" << std::endl;
+        throw std::runtime_error("Could not open file " + save_path);
 }
 void Database::loadFromJson(const std::string &load_path){
     std::fstream file;
